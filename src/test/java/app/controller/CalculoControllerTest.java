@@ -15,11 +15,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import app.CalculosApplication;
 import app.entity.Entrada;
 import app.entity.Saida;
 import app.repository.CalculoRepository;
 
-@SpringBootTest
+@SpringBootTest(classes = CalculosApplication.class)
 public class CalculoControllerTest {
 
 	@Autowired
@@ -62,6 +63,20 @@ public class CalculoControllerTest {
 		ResponseEntity<Saida> retorno = this.calculoController.calcular(entrada);
 		assertEquals(HttpStatus.OK, retorno.getStatusCode());
 	}
+	
+	
+	@Test
+	void cenario02b() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(null);
+		lista.add(4);
+		lista.add(5);
+		Entrada entrada = new Entrada();
+		entrada.setLista(lista);
+		ResponseEntity<Saida> retorno = this.calculoController.calcular(entrada);
+		assertEquals(HttpStatus.BAD_REQUEST, retorno.getStatusCode());
+	}
+	
 	
 	
 	@Test

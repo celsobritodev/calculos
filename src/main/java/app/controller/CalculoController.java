@@ -28,7 +28,7 @@ public class CalculoController {
 			Saida saida = this.calculoService.calcular(entrada);
 			return new ResponseEntity<>(saida, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_GATEWAY);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

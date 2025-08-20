@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import app.CalculosApplication;
 import app.entity.Saida;
 import app.repository.CalculoRepository;
 
@@ -16,7 +17,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootTest
+@SpringBootTest(classes = CalculosApplication.class)
 public class CalculosServiceTest {
 	
 	@Autowired
